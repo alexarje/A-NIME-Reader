@@ -1,0 +1,156 @@
+%%%%%%%%%%%%%%%%%%%%%%%% editor.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample root file for the contributions of a "contributed volume"
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Springer %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[graybox, envcountchap]{svmult}
+
+% choose options for [] as required from the list
+% in the Reference Guide
+
+\usepackage{mathptmx}        % selects Times Roman as basic font
+\usepackage{helvet}          % selects Helvetica as sans-serif font
+\usepackage{courier}         % selects Courier as typewriter font
+%\usepackage{type1cm}        % activate if the above 3 fonts are 
+                             % not available on your system
+
+\usepackage{makeidx}         % allows index generation
+\usepackage{graphicx}        % standard LaTeX graphics tool
+                             % when including figure files
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+
+% packages added from article source files
+% we should check that these do not interfere with other articles
+\usepackage{amsmath} %from Bevilacqua
+\usepackage{booktabs} %from Blaine & Fels
+\usepackage{subfigure} %from Blaine & Fels
+\usepackage{url} %from Blaine & Fels
+
+\usepackage{float}
+%--- à laisser en dernier !!! ---
+ \usepackage[
+    	pdftex,
+    	colorlinks,
+%	linkcolor=red,		
+%	anchorcolor=black,		
+	citecolor=blue,			
+	filecolor=magenta,		
+	menucolor=red,		
+	pagecolor=red,		
+	urlcolor=cyan, 		
+    	raiselinks, %
+    	hyperindex,%
+    	hyperfigures,%,
+    	pagebackref,%
+	plainpages=false,%
+	pdfpagelabels,%
+%    linktocpage,%
+%    plainpages=false,%
+        bookmarksopen,%
+%    bookmarksnumbered%
+  	]{hyperref}
+
+\newenvironment{authbio}{\input{authbiomod.sty}}{}
+
+
+
+% see the list of further useful packages in the Reference Guide
+
+\makeindex             % used for the subject index
+                       % please use the style svind.ist with
+                       % your makeindex program
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% the following are used in various source files
+
+% for tables
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+% used in Blaine & Fels
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\begin{document}
+
+\frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{frontmatter/dedic}
+\include{frontmatter/foreword}
+\include{frontmatter/preface}
+\include{frontmatter/acknow}
+
+\setcounter{tocdepth}{0}
+\tableofcontents
+
+\include{frontmatter/cblist}
+%\include{frontmatter/acronym}
+
+
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{mainmatter/part}
+%\include{mainmatter/author}
+%\include{mainmatter/meta}
+\part*{Articles \\with Author and Expert Commentaries}
+\include{mainmatter/Cook_2001/cook_2001}
+\include{mainmatter/Wessel_2001/wessel_2001}
+\include{mainmatter/Hunt_2002/hunt_2002}
+\include{mainmatter/Tanaka_2002/tanaka_2002}
+\include{mainmatter/Verplank_2002/verplank_2002}
+\include{mainmatter/Blaine_2003/blaine_2003}
+\include{mainmatter/Jorda_2003/jorda_2003}
+\include{mainmatter/Lyons_2003/lyons_2003}
+\include{mainmatter/Wright_2003/wright_2003}
+\include{mainmatter/Kapur_2004/kapur_2004}
+\include{mainmatter/Omodhrain_2004/omodhrain_2004}
+\include{mainmatter/Serafin_2004/serafin_2004}
+\include{mainmatter/Wang_2004/wang_2004}
+\include{mainmatter/Birnbaum_2005/birnbaum_2005}
+\include{mainmatter/Overholt_2005/overholt_2005}
+\include{mainmatter/Aylward_2006/aylward_2006}
+\include{mainmatter/Gaye_2006/gaye_2006}
+\include{mainmatter/Bevilacqua_2007/bevilacqua_2007}
+\include{mainmatter/Fiebrink_2007/fiebrink_2007}
+\include{mainmatter/Gurevich_2007/gurevich_2007}
+\include{mainmatter/Magnusson_2007/magnusson_2007}
+\include{mainmatter/Palacio-Quintin_2008/palacio-quintin_2008}
+\include{mainmatter/Smallwood_2009/smallwood_2009}
+\include{mainmatter/Berdahl_2011/berdahl_2011}
+\include{mainmatter/Freed_2012/freed_2012}
+\include{mainmatter/Ouzounian_2012/ouzounian_2012}
+\include{mainmatter/McPherson_2012/mcpherson_2012}
+\include{mainmatter/Roberts_2013/roberts_2013}
+\include{mainmatter/Jensenius_2014/jensenius_2014}
+\include{mainmatter/Marquez-Borbon_2015/marquez-borbon_2015}
+
+%
+
+\backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%\include{backmatter/appendix}
+\include{backmatter/glossary}
+%\printindex
+
+\include{backmatter/contrib-bio-pics}
+
+
+\bibliographystyle{apalike}
+%\bibliographystyle{chicago}
+\bibliography{backmatter/bibliography.bib}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+

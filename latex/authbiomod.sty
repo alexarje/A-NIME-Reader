@@ -1,0 +1,117 @@
+% SVMono/SVMult DOCUMENT STYLE MODIFICATION FOR AUTHOR BIOGRAPHIES
+% (authbiomod.sty)
+%
+% This is an enhancement for the LaTeX document class for Springer books
+% It provides for a new environment "authbio" that changes the figure
+% environment used along with the classes builtin \sidecaption command
+% to create a little author biography beside an image of the author
+%
+%     Warning: This is a hack, do not distribute any further.
+%
+%%
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+\ProvidesFile{authbiomod.sty}
+              [2015/12/01 v1.0
+SVMono/SVMult style package for Springer books]
+%
+\makeatletter
+\def\floatcounterend{}  % instead of ".\ "
+%
+\long\def\@makesidecaption#1#2{%
+   \setbox0=\vbox{\hsize=\@tempdima
+                  \captionstyle{\floatlegendstyle
+                                         #1\floatcounterend}#2}%
+   \ifdim\instindent<\z@
+      \ifdim\ht0>-\instindent
+         \advance\instindent by\ht0
+         \typeout{^^JClass-Warning: Legend of \string\sidecaption\space for
+                     \@captype\space\csname the\@captype\endcsname
+                  ^^Jis \the\instindent\space taller than the corresponding float -
+                  ^^Jyou'd better switch the environment. }%
+         \instindent\z@
+      \fi
+   \else
+      \ifdim\ht0<\instindent
+         \advance\instindent by-\ht0
+         \advance\instindent by-\dp0\relax
+         \advance\instindent by\topskip
+         \advance\instindent by-11pt
+      \else
+         \advance\instindent by-\ht0
+         \instindent=-\instindent
+         \typeout{^^JClass-Warning: Legend of \string\sidecaption\space for
+                     \@captype\space\csname the\@captype\endcsname
+                  ^^Jis \the\instindent\space taller than the corresponding float -
+                  ^^Jyou'd better switch the environment. }%
+         \instindent\z@
+      \fi
+   \fi
+   \parbox[b]{\@tempdima}{\captionstyle{\floatlegendstyle
+                                        #1\floatcounterend}#2%
+                          \ifdim\instindent>\z@ \\
+                               \vrule\@width\z@\@height\instindent
+                                     \@depth\z@
+                          \fi}}
+\def\sidecaption{\@ifnextchar[\sidec@ption{\sidec@ption[b]}}
+\def\sidec@ption[#1]#2\caption{%
+\setbox\@tempboxa=\hbox{\ignorespaces#2\unskip}%
+\if@twocolumn
+ \ifdim\hsize<\textwidth\else
+   \ifdim\wd\@tempboxa<\columnwidth
+      \typeout{Double column float fits into single column -
+            ^^Jyou'd better switch the environment. }%
+   \fi
+ \fi
+\fi
+  \instindent=\ht\@tempboxa
+  \advance\instindent by\dp\@tempboxa
+\if t#1
+\else
+  \instindent=-\instindent
+\fi
+\@tempdima=\hsize
+\advance\@tempdima by-\figgap
+\advance\@tempdima by-\wd\@tempboxa
+\ifdim\@tempdima<3cm
+   \ClassWarning{SVMult}{\string\sidecaption: No sufficient room for the legend;
+             ^^Jusing normal \string\caption}%
+   \unhbox\@tempboxa
+   \let\@capcommand=\@caption
+\else
+   \ifdim\@tempdima<4.5cm
+      \ClassWarning{SVMult}{\string\sidecaption: Room for the legend very narrow;
+               ^^Jusing \string\raggedright}%
+      \toks@\expandafter{\captionstyle\sloppy
+                         \rightskip=0ptplus6mm\relax}%
+      \def\captionstyle{\the\toks@}%
+   \fi
+   \let\@capcommand=\@sidecaption
+   \leavevmode
+   \unhbox\@tempboxa
+   \hfill
+\fi
+\@dblarg{\@capcommand\@captype}}
+\long\def\@sidecaption#1[#2]#3{%
+  \begingroup
+    \@parboxrestore
+    \@makesidecaption{}{\ignorespaces #3}\par
+  \endgroup}
+%
+\makeatother
+\endinput
+%%
+%% End of file `authbiomod.sty'

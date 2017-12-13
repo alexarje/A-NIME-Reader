@@ -5,7 +5,7 @@ Source files for the anthology *A NIME Reader — Fifteen Years of New Interface
 
 The files in this archive are from the preprint version of the book. You may cite this source or the original Springer publication:
 
-- Citation: Jensenius, Alexander Refsum & Lyons, Michael J. (ed.) (2017). *A NIME Reader: Fifteen Years of New Interfaces for Musical Expression*. Springer.
+- Citation: Jensenius, Alexander Refsum & Lyons, Michael J. (eds.) (2017). *A NIME Reader: Fifteen Years of New Interfaces for Musical Expression*. Springer.
 - DOI: <https://doi.org/10.1007/978-3-319-47214-0>
 - ISBN: 978-3-319-47213-3
 - Online ISBN: 978-3-319-47214-0

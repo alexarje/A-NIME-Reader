@@ -247,3 +247,5 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+latex/main\.pdf
